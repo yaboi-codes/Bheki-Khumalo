@@ -6,7 +6,6 @@
    - Active nav link on scroll
    - Scroll-triggered timeline card animations
    - Smooth scroll offset for fixed nav
-   - Contact form handler with validation
    - Footer year auto-update
 ═══════════════════════════════════════════════ */
 
@@ -137,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── General fade-in for sections ───────── */
   const fadeEls = document.querySelectorAll(
-    '#about .about-photo-col, #about .about-text-col, .exp-header, .connect-text, .connect-form'
+    '#about .about-photo-col, #about .about-text-col, .exp-header, .connect-text'
   );
 
   fadeEls.forEach(el => {
@@ -232,60 +231,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (motionQuery.matches) disableMotion();
   motionQuery.addEventListener('change', e => { if (e.matches) disableMotion(); });
-
-
-  /* ─── Contact form ────────────────────────── */
-  const form        = document.getElementById('contactForm');
-  const successMsg  = document.getElementById('formSuccess');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Simple validation
-      const fields = form.querySelectorAll('[required]');
-      let valid = true;
-
-      fields.forEach(field => {
-        field.style.borderColor = '';
-        if (!field.value.trim()) {
-          field.style.borderColor = '#CC1122';
-          valid = false;
-        }
-        if (field.type === 'email' && field.value.trim()) {
-          const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailReg.test(field.value.trim())) {
-            field.style.borderColor = '#CC1122';
-            valid = false;
-          }
-        }
-      });
-
-      if (!valid) return;
-
-      // Simulate send (replace with actual fetch/API call)
-      const btn = form.querySelector('.btn-submit');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      setTimeout(() => {
-        form.reset();
-        btn.disabled = false;
-        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-
-        if (successMsg) {
-          successMsg.classList.add('visible');
-          setTimeout(() => successMsg.classList.remove('visible'), 4000);
-        }
-      }, 1200);
-    });
-
-    // Live validation — remove red border on input
-    form.querySelectorAll('input, textarea').forEach(field => {
-      field.addEventListener('input', () => {
-        if (field.value.trim()) field.style.borderColor = '';
-      });
-    });
-  }
 
 }); // end DOMContentLoaded

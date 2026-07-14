@@ -479,6 +479,7 @@ a { text-decoration: none; color: inherit; }
 .about-tags.visible span:nth-child(4) { transition-delay: 0.35s !important; }
 .about-tags.visible span:nth-child(5) { transition-delay: 0.45s !important; }
 .about-tags.visible span:nth-child(6) { transition-delay: 0.55s !important; }
+.about-tags.visible span:nth-child(7) { transition-delay: 0.65s !important; }
 
 .about-tags span {
   padding: 0.35rem 0.9rem;
