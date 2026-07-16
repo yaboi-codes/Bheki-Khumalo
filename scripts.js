@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─── Active nav link on scroll ──────────── */
   const sections    = document.querySelectorAll('section[id]');
   const navAnchors  = document.querySelectorAll('.nav-links a');
-  const NAV_OFFSET  = 80; // px below nav to trigger
+  const NAV_OFFSET  = 170; // px below nav to trigger
 
   const setActiveLink = () => {
     let current = '';
